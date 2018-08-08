@@ -1,6 +1,7 @@
 File (Field) Paths 7.x-1.x, xxxx-xx-xx (development release)
 --------------------------------------------------------------------------------
 
+- Fixed security issue
 - #2643026: Fixed issue when anonymous function not created.
 
 
