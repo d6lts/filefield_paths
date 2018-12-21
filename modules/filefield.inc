@@ -47,9 +47,9 @@ function filefield_filefield_paths_get_fields(&$node, &$ffp) {
     $content_type = content_types($node->type);
 
     foreach ($content_type['fields'] as $field) {
-      if ($field['type'] == 'filefield' && isset($node->$field['field_name']) && is_array($node->$field['field_name'])) {
+      if ($field['type'] == 'filefield' && isset($node->{$field['field_name']}) && is_array($node->{$field['field_name']})) {
 
-        foreach ($node->$field['field_name'] as &$file) {
+        foreach ($node->{$field['field_name']} as &$file) {
           $ffp['#files'][] = array(
             'field' => &$file,
             'module' => $field['module'],

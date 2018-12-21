@@ -69,7 +69,7 @@ function filefield_paths_form_alter(&$form, $form_state, $form_id) {
       );
       if (!empty($result)) {
         foreach ($fields as &$field) {
-          $field['settings'] = unserialize($result->$field['sql']);
+          $field['settings'] = unserialize($result->{$field['sql']});
         }
         unset($field);
       }
@@ -352,9 +352,9 @@ function filefield_paths_node_presave(&$node) {
     $content_type = content_types($node->type);
 
     foreach ($content_type['fields'] as $field) {
-      if ($field['type'] == 'filefield' && is_array($node->$field['field_name'])) {
+      if ($field['type'] == 'filefield' && is_array($node->{$field['field_name']})) {
 
-        foreach ($node->$field['field_name'] as $count => &$file) {
+        foreach ($node->{$field['field_name']} as $count => &$file) {
           if (!is_array($file) || empty($file['filepath'])) {
             continue;
           }
@@ -474,7 +474,7 @@ function filefield_paths_get_fields(&$node, $op = NULL) {
 
     if (!empty($result)) {
       foreach ($fields as $field) {
-        $ffp['#settings'][$name][$field['sql']] = unserialize($result->$field['sql']);
+        $ffp['#settings'][$name][$field['sql']] = unserialize($result->{$field['sql']});
       }
     }
   }
