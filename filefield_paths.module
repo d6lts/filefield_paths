@@ -718,7 +718,7 @@ function filefield_paths_file_move(&$file, $replace = FILE_EXISTS_RENAME) {
 
   foreach (explode('/', $dest) as $dir) {
     $dirs[] = $dir;
-    $path = file_create_path(implode($dirs, '/'));
+    $path = file_create_path(implode('/', $dirs));
     if (!_filefield_paths_check_directory($path, FILE_CREATE_DIRECTORY)) {
       watchdog('filefield_paths', 'FileField Paths failed to create directory (%d).', array('%d' => $path), WATCHDOG_ERROR);
       return FALSE;
