@@ -163,7 +163,7 @@ function filefield_paths_update_6102() {
     foreach ($fields as $field) {
       $cols[] = $field['sql'] ." = '%s'";
 
-      $val = unserialize($data->$field['sql']);
+      $val = unserialize($data->{$field['sql']});
       $val = str_replace('[filefield_paths-name]', '[filefield-onlyname]', $val);
       $val = str_replace('[filefield_paths-ext]', '[filefield-extension]', $val);
 
